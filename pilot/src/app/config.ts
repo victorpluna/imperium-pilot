@@ -9,5 +9,6 @@ export const config = {
     chainId: 1007845588,
     contractAddress: '0xb82C4150d953fcCcE42d7D53246B5553016c5C71',
     spenderAddress: '0x3719cd52b54D52d9E69B8BACfDa3FFEFB7FBFD15',
+    rpcUrl: 'https://a0nvonbkyf:9pKTOtHRyVBoeAmAdZQdo5pFqtn3sEXAOt3I-xAabd4@a0jq79osep-a0yjwjns56-rpc.au0-aws.kaleido.io',
   },
 }
