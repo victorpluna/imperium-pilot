@@ -32,7 +32,7 @@ export function walletClientToSigner(walletClient: WalletClient) {
     ensAddress: chain.contracts?.ensRegistry?.address,
   }
   const provider = new ethers.providers.Web3Provider(transport, network)
-  // The below line implement a interceptor which will add the Authorization header to the request
+  // The below line implement an interceptor which will add the Authorization header to the request
   // const provider = new ethers.providers.Web3Provider({ ...transport, request: sendRpcRequest }, network)
   
   provider.provider.sendAsync = sendRpcRequest

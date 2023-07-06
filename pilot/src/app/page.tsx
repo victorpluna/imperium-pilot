@@ -7,6 +7,24 @@ import { EthereumProvider } from '@walletconnect/ethereum-provider'
 import { ethers } from 'ethers'
 import abi from './abi.json'
 
+export const sendRpcRequest = async (payload: any, callback: any) => {
+  fetch('https://a0jq79osep-a0yjwjns56-rpc.au0-aws.kaleido.io', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic YTBudm9uYmt5Zjo5cEtUT3RIUnlWQm9lQW1BZFpRZG81cEZxdG4zc0VYQU90M0kteEFhYmQ0',
+    },
+    body: JSON.stringify(payload),
+  })
+  .then(response => response.json())
+  .then(result => {
+    callback(null, result);
+  })
+  .catch(error => {
+    callback(error, null);
+  });
+}
+
 export default function Home() {
   const [web3Provider, setWeb3Provider] = useState<any>()
   const [account, setAccount] = useState<any>()
@@ -30,6 +48,8 @@ export default function Home() {
     setAccount(sessionAccount)
 
     const provider = new ethers.providers.Web3Provider(client)
+    // The below line implement an interceptor which will add the Authorization header to the request
+    // const provider = new ethers.providers.Web3Provider({ ...client, sendAsync: sendRpcRequest })
 
     setWeb3Provider(provider)
   }
